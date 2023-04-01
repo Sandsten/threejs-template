@@ -1,29 +1,3 @@
-import * as THREE from 'three';
-
-function makeCubeInstance(scene, geometry, color, x) {
-  const material = new THREE.MeshPhongMaterial({ color });
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
-  cube.position.x = x;
-  return cube;
-}
-
-function addHelperAxes(node) {
-  const axes = new THREE.AxesHelper();
-  axes.material.depthTest = false;
-  axes.renderOrder = 1;
-  node.add(axes);
-}
-
-function createCamera(fov) {
-  const aspect = 2;
-  const near = 0.1;
-  const far = 20;
-  const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-
-  return camera;
-}
-
 /**
  * Updates the canvas resolution and aspect ratio based on browser window size
  * @param {Three.js renderer} renderer
@@ -46,4 +20,4 @@ function screenSizeManager(renderer, camera) {
   }
 }
 
-export { makeCubeInstance, addHelperAxes, screenSizeManager, createCamera };
+export { screenSizeManager };

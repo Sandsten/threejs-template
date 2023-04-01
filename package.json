@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "dev": "docker-compose -f docker-compose.dev.yml up --remove-orphans --build",
+    "dev": "docker-compose -f docker-compose.dev.yml up --remove-orphans",
     "dev:build": "docker-compose -f docker-compose.dev.yml up --build",
     "start": "webpack serve --config webpack.config.dev.js"
   },
@@ -32,7 +32,6 @@
     "webpack-glsl-loader": "^1.0.1"
   },
   "dependencies": {
-    "dat.gui": "^0.7.7",
     "three": "^0.143.0"
   }
 }
