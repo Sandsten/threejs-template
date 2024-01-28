@@ -13,16 +13,16 @@
   "license": "ISC",
   "devDependencies": {
     "@types/dat.gui": "^0.7.9",
-    "@types/three": "^0.151.0",
+    "@types/three": "^0.160.0",
     "@webpack-cli/serve": "^2.0.2",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.3",
     "file-loader": "^6.2.0",
-    "html-loader": "^4.2.0",
+    "html-loader": "^5.0.0",
     "html-webpack-plugin": "^5.5.1",
     "mini-css-extract-plugin": "^2.7.5",
-    "node-sass": "^8.0.0",
-    "sass-loader": "^13.2.2",
+    "node-sass": "^9.0.0",
+    "sass-loader": "^14.0.0",
     "style-loader": "^3.3.2",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.4",
@@ -32,6 +32,6 @@
     "webpack-glsl-loader": "^1.0.1"
   },
   "dependencies": {
-    "three": "^0.152.2"
+    "three": "^0.160.1"
   }
 }

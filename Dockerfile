@@ -1,4 +1,4 @@
-FROM node:18.15.0-alpine3.17 as builder
+FROM node:20.11.0-alpine as builder
 
 # Create a folder called app in our container and set it as our working directory
 # I.e all subsequent commands will use this as root
@@ -17,7 +17,7 @@ COPY . .
 ####
 # Multistage build
 ####
-FROM node:18.15.0-alpine3.17
+FROM node:20.11.0-alpine
 
 WORKDIR /app
 

@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  webapp:
+    build:
+      context: .
+    ports:
+      - 8080:8080
+    environment:
+      - NODE_ENV=development
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
+        - action: rebuild
+          path: webpack.config.dev.js
+    tty: true

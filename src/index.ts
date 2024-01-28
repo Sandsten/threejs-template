@@ -29,13 +29,16 @@ function main() {
 
   // Materials
   const material1 = new THREE.MeshStandardMaterial();
-  material1.color.set(0xfff000);
+  material1.color.set(0xffffff);
   material1.metalness = 0.1;
   material1.roughness = 0.8;
+
+  console.log("potato")
 
   // Lights
   const pointLight = new THREE.PointLight(0xffffff, 0.6);
   pointLight.position.set(-1, 3, 3);
+  pointLight.intensity = 20;
   scene.add(pointLight);
 
 
