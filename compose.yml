@@ -4,8 +4,9 @@ services:
   webapp:
     build:
       context: .
+      dockerfile: Dockerfile.dev
     ports:
-      - 8080:8080
+      - 3000:3000
     environment:
       - NODE_ENV=development
     develop:

@@ -14,13 +14,13 @@ RUN npm install
 # Files and folders in .dockerignore will not be copied into the container
 COPY . .
 
-RUN npm run build
+####
+# Multistage build
+####
+FROM node:20.11.0-alpine
 
+WORKDIR /app
 
-FROM httpd:2.4
+COPY --from=builder /app/ /app/
 
-# Serve static content with apache from the endpoint /myapp
-# the endpoint should match the publicPath configured in webpack.config.js
-COPY --from=builder /app/dist/ /usr/local/apache2/htdocs/myapp
-
-EXPOSE 80
+CMD [ "npm", "start" ]

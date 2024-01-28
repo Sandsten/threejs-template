@@ -8,20 +8,15 @@ module.exports = {
   },
   devServer: {
     host: '0.0.0.0', // Required for working inside a docker container
-    port: 8080,
+    port: 3000,
     historyApiFallback: true, // 404 responses will fall back to index.html. Required for using react-router-dom
-    // disableHostCheck: true // Might have to be enabled in order to run dev server in docker container
   },
   // watchOptions required in order for webpack to rebuild when used inside a docker container
   watchOptions: {
     aggregateTimeout: 500, // Delay before rebuilding once a file has changed
-    poll: 1000, // Check for changes every second
+    poll: 1000, 
   },
-  // node: {
-  // 	Buffer: false,
-  // 	process: false,
-  // },
-  devtool: 'source-map', // Remove this when in production, takes alot of space!
+  devtool: 'source-map', 
   resolve: {
     // changed from extensions: [".js", ".jsx"]
     // This is the order in which extensions are tested against imports
@@ -41,9 +36,9 @@ module.exports = {
       },
       {
         test: /\.s(c|a)ss$/,
-        // Order of modules matters
+        // The last loader will be used first
         use: [
-          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'style-loader',
           'css-loader',
           'sass-loader',
         ],
@@ -53,7 +48,6 @@ module.exports = {
         use: ['file-loader'],
       },
       {
-        //Load fonts
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: ['file-loader'],
       },
