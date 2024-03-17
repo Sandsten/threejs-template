@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import { screenSizeManager } from './modules/helpers';
 
-import './css/main.scss';
+import './css/main.css';
 
 function main() {
   // Create a renderer and append it to our document
