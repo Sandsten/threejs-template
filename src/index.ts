@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import { screenSizeManager } from './modules/helpers';
 
-import './css/main.css';
+import './css/main.scss';
 
 function main() {
   // Create a renderer and append it to our document
@@ -32,8 +32,6 @@ function main() {
   material1.color.set(0xffffff);
   material1.metalness = 0.1;
   material1.roughness = 0.8;
-
-  console.log("potato")
 
   // Lights
   const pointLight = new THREE.PointLight(0xffffff, 0.6);
