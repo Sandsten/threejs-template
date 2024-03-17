@@ -5,7 +5,7 @@ FROM node:20.11.0-alpine as builder
 WORKDIR /app
 
 # Copy over our package files in to the root folder of our project in the container
-COPY ["package.json", "package-lock.json", "./"]
+COPY ["package.json", "./"]
 
 # Install npm packages
 RUN npm install
@@ -20,7 +20,7 @@ RUN npm run build
 FROM httpd:2.4
 
 # Serve static content with apache from the endpoint /myapp
-# the endpoint should match the publicPath configured in webpack.config.js
+# the endpoint should match "base" set in vite.config.js
 COPY --from=builder /app/dist/ /usr/local/apache2/htdocs/myapp
 
 EXPOSE 80
