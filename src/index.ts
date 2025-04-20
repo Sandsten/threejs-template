@@ -3,6 +3,9 @@ import { OrbitControls } from 'three/examples/jsm/Addons.js';
 
 import { screenSizeManager } from './modules/helpers';
 
+import basicVertexShader from './shaders/basic/basic.vert?raw';
+import basicFragmentShader from './shaders/basic/basic.frag?raw';
+
 import './css/main.scss';
 
 function main() {
@@ -27,31 +30,25 @@ function main() {
 
   const scene = new THREE.Scene();
 
-  // Materials
-  const material1 = new THREE.MeshStandardMaterial();
-  material1.color.set(0xffffff);
-  material1.metalness = 0.1;
-  material1.roughness = 0.8;
+  const customShaderMaterial = new THREE.ShaderMaterial({
+    vertexShader: basicVertexShader,
+    fragmentShader: basicFragmentShader,
 
-  // Lights
-  const pointLight = new THREE.PointLight(0xffffff, 0.6);
-  pointLight.position.set(-1, 3, 3);
-  pointLight.intensity = 20;
-  scene.add(pointLight);
+    side: THREE.DoubleSide
+  });
 
+  const plane = new THREE.PlaneGeometry(2, 1, 10, 10);
+  const planeMesh = new THREE.Mesh(plane, customShaderMaterial);
+  scene.add(planeMesh);
 
-  const globalLight = new THREE.AmbientLight(0xffffff, 0.3);
-  scene.add(globalLight);
-
-  const torusKnot = new THREE.TorusKnotGeometry(0.3, 0.1, 100, 100, 2, 3);
-  const knotMesh = new THREE.Mesh(torusKnot, material1);
-  scene.add(knotMesh);
-
-  function render(time: number) {
-    time *= 0.001; // Convert milliseconds to seconds
+  const clock = new THREE.Clock();
+  function render() {
     screenSizeManager(renderer, camera);
 
-    knotMesh.rotation.y = time * 0.5;
+    const elapsedTIme = clock.elapsedTime;
+    const dt = clock.getDelta();
+
+    planeMesh.rotation.y += .5 * dt;
 
     renderer.render(scene, camera);
     requestAnimationFrame(render);
